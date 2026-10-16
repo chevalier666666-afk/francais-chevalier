@@ -30,7 +30,7 @@
 <div class="app">
   <header class="topbar">
     <div class="brand"><div class="logo">♞</div><div><b>Français avec le chevalier</b><small>Apprendre • S’entraîner • Progresser</small></div></div>
-    <div class="status"><div class="mini-pill" id="bestMini">🏆 0/20</div><div class="mini-pill">Démo 3.0</div></div>
+    <div class="status"><div class="mini-pill" id="bestMini">🏆 0/20</div><div class="mini-pill">Démo 4.0</div></div>
   </header>
 
   <main>
@@ -52,8 +52,14 @@
         <div class="home-progress"><div class="row"><span>تقدم النسخة التجريبية</span><b id="progressLabel">0%</b></div><div class="progress"><div class="bar" id="homeBar"></div></div></div>
       </div>
 
+      <div class="card path-card">
+        <div class="path-head"><div><h2>🗺️ خريطة التعلّم</h2><small>Module 1 — Bonjour ! • خلّص مرحلة علشان تفتح اللي بعدها</small></div><span class="pill" id="pathCount">0/8</span></div>
+        <div class="learning-path" id="learningPath"></div>
+        <div id="moduleCompleteMsg" class="module-complete hidden">🏆 Bravo ! خلّصت الوحدة ونجحت في الاختبار. المرحلة التالية هتتفتح لما نضيف Module 2.</div>
+      </div>
+
       <div class="card">
-        <div class="section-head"><h2>اختر الصف</h2><span class="muted" style="font-size:12px">مسار التعلم</span></div>
+        <div class="section-head"><h2>اختر الصف</h2><span class="muted" style="font-size:12px">المراحل المتاحة</span></div>
         <div class="grid">
           <button class="course-card active" onclick="openCourse()"><span class="badge">متاح</span><div class="icon">👋</div><strong>1ère préparatoire</strong><small>Module 1 — Bonjour !<br>Module complet + نطق + Quiz</small></button>
           <button class="course-card locked" disabled><div class="icon">👕</div><strong>2ème préparatoire</strong><small>Les vêtements<br>قريبًا</small></button>
@@ -87,7 +93,7 @@
         <div class="lesson-block"><button class="speak" onclick="speakFr('Salut')">🔊</button><div class="fr">Salut !</div><div class="translation">مرحبًا — بشكل غير رسمي</div></div>
         <div class="lesson-block"><button class="speak" onclick="speakFr('Bonne nuit')">🔊</button><div class="fr">Bonne nuit !</div><div class="translation">تصبح على خير</div></div>
         <div class="tip">💡 <b>Bonjour</b> للتحية نهارًا، و<b>Bonsoir</b> مساءً، و<b>Salut</b> أكثر مع الأصدقاء.</div>
-        <button class="btn gold" onclick="nextLesson(1)">التالي: عبارات مهمة ←</button>
+        <button class="btn gold" onclick="completeStageAndNext(0,1)">التالي: عبارات مهمة ←</button>
       </div>
 
       <div class="card lesson-tab hidden" data-tab="1">
@@ -98,7 +104,7 @@
         <div class="lesson-block"><button class="speak" onclick="speakFr('Pardon')">🔊</button><div class="fr">Pardon.</div><div class="translation">عفوًا / آسف</div></div>
         <div class="lesson-block"><button class="speak" onclick="speakFr('Excuse-moi')">🔊</button><div class="fr">Excuse-moi.</div><div class="translation">اعذرني</div></div>
         <div class="lesson-block"><button class="speak" onclick="speakFr('À bientôt')">🔊</button><div class="fr">À bientôt !</div><div class="translation">أراك قريبًا</div></div>
-        <button class="btn gold" onclick="nextLesson(2)">التالي: Ça va ←</button>
+        <button class="btn gold" onclick="completeStageAndNext(1,2)">التالي: Ça va ←</button>
       </div>
 
       <div class="card lesson-tab hidden" data-tab="2">
@@ -109,7 +115,7 @@
         <div class="lesson-block"><button class="speak" onclick="speakFr('Pas mal')">🔊</button><div class="fr">Pas mal.</div><div class="translation">لا بأس.</div></div>
         <div class="lesson-block"><button class="speak" onclick="speakFr('Pas très bien')">🔊</button><div class="fr">Pas très bien.</div><div class="translation">لست بخير جدًا.</div></div>
         <div class="lesson-block"><button class="speak" onclick="speakFr('Ça va mal')">🔊</button><div class="fr">Ça va mal.</div><div class="translation">أنا لست بخير.</div></div>
-        <button class="btn gold" onclick="nextLesson(3)">التالي: Les nombres ←</button>
+        <button class="btn gold" onclick="completeStageAndNext(2,3)">التالي: Les nombres ←</button>
       </div>
 
       <div class="card lesson-tab hidden" data-tab="3">
@@ -119,7 +125,7 @@
         <div class="lesson-block"><div class="fr">9 neuf • 10 dix • 11 onze • 12 douze</div></div>
         <div class="btn-row"><button class="btn secondary" onclick="speakFr('un, deux, trois, quatre, cinq, six')">🔊 1 → 6</button><button class="btn secondary" onclick="speakFr('sept, huit, neuf, dix, onze, douze')">🔊 7 → 12</button></div>
         <div class="tip">🎧 استمع ثم كرر الأرقام بصوت مرتفع.</div>
-        <button class="btn gold" onclick="nextLesson(4)">التالي: Pronoms sujets ←</button>
+        <button class="btn gold" onclick="completeStageAndNext(3,4)">التالي: Pronoms sujets ←</button>
       </div>
 
       <div class="card lesson-tab hidden" data-tab="4">
@@ -128,7 +134,7 @@
         <div class="lesson-block"><div class="fr">Nous — Vous — Ils — Elles</div><div class="translation">نحن — أنتم / حضرتك — هم — هنّ</div></div>
         <div class="tip">⚠️ أمام حرف متحرك أو h صامت: <b>Je → J’</b>، مثل: <b>J’habite</b>.</div>
         <div class="tip">🧠 <b>moi + أي شخص → nous</b>، و<b>toi + أي شخص → vous</b>.</div>
-        <button class="btn gold" onclick="nextLesson(5)">التالي: s’appeler ←</button>
+        <button class="btn gold" onclick="completeStageAndNext(4,5)">التالي: s’appeler ←</button>
       </div>
 
       <div class="card lesson-tab hidden" data-tab="5">
@@ -140,7 +146,7 @@
         <div class="lesson-block"><div class="fr">Vous vous appelez</div></div>
         <div class="lesson-block"><div class="fr">Ils / Elles s’appellent</div></div>
         <div class="lesson-block example"><button class="speak" onclick="speakFr('Je m\'appelle Ali')">🔊</button><div class="fr">Je m’appelle Ali.</div><div class="translation">اسمي علي.</div></div>
-        <button class="btn gold" onclick="nextLesson(6)">التالي: Questions / Réponses ←</button>
+        <button class="btn gold" onclick="completeStageAndNext(5,6)">التالي: Questions / Réponses ←</button>
       </div>
 
       <div class="card lesson-tab hidden" data-tab="6">
@@ -150,7 +156,7 @@
         <div class="lesson-block"><button class="speak" onclick="speakFr('Comment ça va ?')">🔊</button><div class="fr">Comment ça va ?</div><div class="translation">كيف حالك؟</div></div>
         <div class="lesson-block example"><button class="speak" onclick="speakFr('Ça va bien, merci')">🔊</button><div class="fr">Ça va bien, merci.</div><div class="translation">أنا بخير، شكرًا.</div></div>
         <div class="lesson-block"><button class="speak" onclick="speakFr('Au revoir, à bientôt')">🔊</button><div class="fr">Au revoir ! À bientôt !</div><div class="translation">إلى اللقاء! أراك قريبًا!</div></div>
-        <button class="btn gold" onclick="nextLesson(7)">التالي: المراجعة ←</button>
+        <button class="btn gold" onclick="completeStageAndNext(6,7)">التالي: المراجعة ←</button>
       </div>
 
       <div class="card lesson-tab hidden" data-tab="7">
@@ -158,7 +164,7 @@
         <h3 style="margin:12px 0">جاهز للاختبار؟ 🎯</h3>
         <p class="muted" style="line-height:1.8">الاختبار النهائي للوحدة يحتوي على 20 سؤالًا من التحيات، العبارات المهمة، Ça va، الأرقام، الضمائر وs’appeler.</p>
         <div class="result-grid"><div class="stat-box"><b>8</b><span>أجزاء</span></div><div class="stat-box"><b>20</b><span>سؤالًا</span></div><div class="stat-box"><b>200</b><span>XP ممكنة</span></div></div>
-        <div class="lesson-actions"><button class="btn gold" onclick="completeLessonAndQuiz()">✅ أنهيت الوحدة — ابدأ الاختبار</button><button class="btn secondary" onclick="showLessonTab(0,document.querySelector('#lessonNav button'))">إعادة الوحدة من البداية</button></div>
+        <div class="lesson-actions"><button class="btn gold" onclick="completeFinalStageAndQuiz()">✅ أنهيت الوحدة — ابدأ الاختبار</button><button class="btn secondary" onclick="showLessonTab(0,document.querySelector('#lessonNav button'))">إعادة الوحدة من البداية</button></div>
       </div>
     </section>
 
@@ -194,6 +200,16 @@
 <nav class="bottomnav"><div class="bottomnav-inner"><button class="navbtn active" data-nav="home" onclick="goHome()"><span>⌂</span>الرئيسية</button><button class="navbtn" data-nav="course" onclick="openCourse()"><span>📘</span>الدرس</button><button class="navbtn" data-nav="quiz" onclick="startQuiz()"><span>🎯</span>التدريب</button></div></nav>
 
 <script>
+const stageData=[
+ {icon:'👋',title:'Les salutations',sub:'Bonjour • Bonsoir • Salut • Bonne nuit'},
+ {icon:'🙏',title:'Expressions utiles',sub:'Merci • De rien • Pardon • À bientôt'},
+ {icon:'😊',title:'Ça va ?',sub:'السؤال عن الحال والردود'},
+ {icon:'🔢',title:'Les nombres',sub:'الأرقام من 1 إلى 12'},
+ {icon:'👤',title:'Pronoms sujets',sub:'Je • Tu • Il • Elle • Nous • Vous…'},
+ {icon:'🗣️',title:'Le verbe s’appeler',sub:'التعريف بالاسم وتصريف الفعل'},
+ {icon:'❓',title:'Questions / Réponses',sub:'أسئلة وإجابات أساسية'},
+ {icon:'🎯',title:'Révision',sub:'مراجعة الوحدة قبل الاختبار'}
+];
 const qs=[
  {q:"Bonjour !",a:["مرحبًا / صباح الخير","إلى اللقاء","شكرًا"],c:0,rtl:true},
  {q:"Bonsoir !",a:["مساء الخير","تصبح على خير","من فضلك"],c:0,rtl:true},
@@ -226,19 +242,24 @@ const store={
 };
 function show(id){['home','course','quiz','result'].forEach(x=>$(x).classList.add('hidden'));$(id).classList.remove('hidden');document.querySelectorAll('.navbtn').forEach(b=>b.classList.toggle('active',b.dataset.nav===id || (id==='result'&&b.dataset.nav==='quiz')));window.scrollTo({top:0,behavior:'smooth'})}
 function goHome(){updateUI();show('home')}
-function openCourse(){store.set('fac_opened_lesson','1');updateUI();show('course');let n=Math.min(7,Number(store.get('fac_lesson_tab')||0));showLessonTab(n,document.querySelectorAll('#lessonNav button')[n])}
-function showLessonTab(n,btn){document.querySelectorAll('.lesson-tab').forEach((e,idx)=>e.classList.toggle('hidden',idx!==n));document.querySelectorAll('#lessonNav button').forEach((b,idx)=>b.classList.toggle('active',idx===n));let lb=$('lessonBar');if(lb)lb.style.width=(((n+1)/8)*100)+'%';store.set('fac_lesson_tab',String(n));window.scrollTo({top:0,behavior:'smooth'})}
-function nextLesson(n){showLessonTab(n,document.querySelectorAll('#lessonNav button')[n])}
-function completeLessonAndQuiz(){store.set('fac_lesson_done','1');updateUI();startQuiz()}
-function startQuiz(){i=0;score=0;locked=false;show('quiz');renderQ()}
+function openCourse(tab){store.set('fac_opened_lesson','1');updateUI();show('course');let max=getMaxUnlocked();let n=tab===undefined?Math.min(max,Number(store.get('fac_lesson_tab')||0)):Math.min(max,Number(tab));showLessonTab(n,document.querySelectorAll('#lessonNav button')[n])}
+function showLessonTab(n,btn){let max=getMaxUnlocked();if(n>max)return;document.querySelectorAll('.lesson-tab').forEach((e,idx)=>e.classList.toggle('hidden',idx!==n));document.querySelectorAll('#lessonNav button').forEach((b,idx)=>{b.classList.toggle('active',idx===n);b.disabled=idx>max;b.style.opacity=idx>max?'.45':'1';b.style.cursor=idx>max?'not-allowed':'pointer'});let lb=$('lessonBar');if(lb)lb.style.width=(((n+1)/8)*100)+'%';store.set('fac_lesson_tab',String(n));window.scrollTo({top:0,behavior:'smooth'})}
+function getDoneCount(){return Math.max(0,Math.min(8,Number(store.get('fac_stage_done')||0)))}
+function getMaxUnlocked(){return Math.min(7,getDoneCount())}
+function completeStageAndNext(current,next){let done=getDoneCount();if(done<=current)store.set('fac_stage_done',String(current+1));updateUI();showLessonTab(next,document.querySelectorAll('#lessonNav button')[next])}
+function completeFinalStageAndQuiz(){if(getDoneCount()<8)store.set('fac_stage_done','8');store.set('fac_lesson_done','1');updateUI();startQuiz()}
+function openStage(n){if(n<=getMaxUnlocked()){openCourse(n)}}
+function renderLearningPath(){let done=getDoneCount(),best=getBest(),passed=best>=14;let el=$('learningPath');if(!el)return;el.innerHTML='';stageData.forEach((st,idx)=>{let state=idx<done?'done':idx===done?'unlocked':'locked';if(done>=8)state='done';let d=document.createElement('div');d.className='stage '+state+(idx===7?' final':'');if(state!=='locked')d.onclick=()=>openStage(idx);let status=state==='done'?'تمت ✅':state==='unlocked'?'متاحة الآن':'مقفولة 🔒';d.innerHTML=`<div class="stage-info"><b>${idx+1}. ${st.title}</b><small>${st.sub}</small><div class="path-status"><span class="dot"></span>${status}</div></div><div class="stage-node">${state==='done'?'✓':st.icon}</div>`;el.appendChild(d)});$('pathCount').textContent=Math.min(done,8)+'/8';$('moduleCompleteMsg').classList.toggle('hidden',!(done>=8&&passed))}
+
+function startQuiz(){if(getDoneCount()<8){openCourse(getMaxUnlocked());return}i=0;score=0;locked=false;show('quiz');renderQ()}
 function renderQ(){locked=false;$('counter').textContent=(i+1)+' / '+qs.length;$('quizBar').style.width=((i)/qs.length*100)+'%';$('liveScore').textContent=score;$('quizBest').textContent=getBest()+'/'+qs.length;let q=qs[i];let qel=$('question');qel.textContent=q.q;qel.style.direction=q.rtl?'rtl':'ltr';qel.style.textAlign=q.rtl?'right':'left';let box=$('answers');box.innerHTML='';q.a.forEach((t,idx)=>{let b=document.createElement('button');b.className='ans';b.textContent=t;if(q.rtl){b.style.direction='rtl';b.style.textAlign='right'}b.onclick=()=>pick(idx,b);box.appendChild(b)});let f=$('feedback');f.textContent='';f.className='feedback';$('nextBtn').classList.add('hidden')}
 function pick(idx,btn){if(locked)return;locked=true;let q=qs[i],buttons=[...document.querySelectorAll('.ans')];buttons.forEach((b,j)=>{if(j===q.c)b.classList.add('correct')});let f=$('feedback');if(idx===q.c){score++;$('liveScore').textContent=score;f.textContent='✅ Bravo ! إجابة صحيحة';f.className='feedback ok'}else{btn.classList.add('wrong');f.textContent='❌ راجع الإجابة الصحيحة وحاول في السؤال التالي.';f.className='feedback bad'}$('nextBtn').textContent=i===qs.length-1?'عرض النتيجة':'السؤال التالي';$('nextBtn').classList.remove('hidden')}
 function nextQuestion(){i++;if(i>=qs.length)finish();else renderQ()}
-function finish(){let old=getBest();let best=Math.max(score,old);store.set('fac_demo_best',best);store.set('fac_quiz_done','1');let earned=score*10;let xp=Number(store.get('fac_xp')||0)+earned;store.set('fac_xp',xp);show('result');let pct=Math.round(score/qs.length*100);$('score').textContent=score+'/'+qs.length;$('percent').textContent=pct+'%';$('resultRing').style.setProperty('--scoreDeg',(pct*3.6)+'deg');$('correctStat').textContent=score;$('xpStat').textContent='+'+earned;$('bestStat').textContent=best+'/'+qs.length;let title,msg,stars;if(pct>=90){title='Excellent ! 🏆';msg='أداء ممتاز جدًا. أنت جاهز للانتقال للجزء التالي.';stars='⭐⭐⭐'}else if(pct>=70){title='Très bien ! 👏';msg='أداء قوي. راجع الأخطاء البسيطة وحاول مرة ثانية لتحصل على العلامة الكاملة.';stars='⭐⭐⭐'}else if(pct>=50){title='Bien ! 👍';msg='بداية جيدة. راجع الدرس بسرعة ثم أعد التدريب.';stars='⭐⭐☆'}else{title='Continue ! 💪';msg='راجع الشرح والنطق ثم جرّب مرة أخرى، وستلاحظ التحسن.';stars='⭐☆☆'}$('resultTitle').textContent=title;$('resultText').textContent=msg;$('stars').textContent=stars;updateUI()}
+function finish(){let old=getBest();let best=Math.max(score,old);store.set('fac_demo_best',best);store.set('fac_quiz_done','1');let earned=Math.max(0,(best-old)*10);let xp=Number(store.get('fac_xp')||0)+earned;store.set('fac_xp',xp);if(best>=14)store.set('fac_module1_passed','1');show('result');let pct=Math.round(score/qs.length*100);$('score').textContent=score+'/'+qs.length;$('percent').textContent=pct+'%';$('resultRing').style.setProperty('--scoreDeg',(pct*3.6)+'deg');$('correctStat').textContent=score;$('xpStat').textContent='+'+earned;$('bestStat').textContent=best+'/'+qs.length;let title,msg,stars;if(pct>=90){title='Excellent ! 🏆';msg='أداء ممتاز جدًا. أنت جاهز للانتقال للجزء التالي.';stars='⭐⭐⭐'}else if(pct>=70){title='Très bien ! 👏';msg='نجحت في الوحدة ✅ المرحلة دي اتقفلت كمكتملة. حاول مرة ثانية لو عايز تحسن أفضل نتيجة.';stars='⭐⭐⭐'}else if(pct>=50){title='Bien ! 👍';msg='قريب جدًا. محتاج 14/20 على الأقل علشان تعتبر الوحدة مكتملة. راجع الأخطاء وحاول تاني.';stars='⭐⭐☆'}else{title='Continue ! 💪';msg='راجع الشرح والنطق ثم جرّب مرة أخرى، وستلاحظ التحسن.';stars='⭐☆☆'}$('resultTitle').textContent=title;$('resultText').textContent=msg;$('stars').textContent=stars;updateUI()}
 function getBest(){return Number(store.get('fac_demo_best')||0)}
 function saveName(){let n=$('studentName').value.trim();if(!n)return;store.set('fac_student_name',n);updateUI();$('studentName').blur()}
-function clearProgress(){['fac_demo_best','fac_xp','fac_lesson_done','fac_quiz_done','fac_opened_lesson','fac_lesson_tab'].forEach(k=>store.remove(k));updateUI()}
-function updateUI(){let n=store.get('fac_student_name')||'chevalier';$('heroName').textContent=n;$('profileName').textContent=n==='chevalier'?'الطالب':n;$('studentName').value=n==='chevalier'?'':n;let best=getBest();$('bestMini').textContent='🏆 '+best+'/'+qs.length;let xp=Number(store.get('fac_xp')||0);$('xpValue').textContent=xp;let progress=0;if(store.get('fac_opened_lesson')){let t=Number(store.get('fac_lesson_tab')||0);progress=Math.max(8,Math.round(((t+1)/8)*70))}if(store.get('fac_lesson_done'))progress=75;if(store.get('fac_quiz_done'))progress=100;$('homeBar').style.width=progress+'%';$('progressLabel').textContent=progress+'%'}
+function clearProgress(){['fac_demo_best','fac_xp','fac_lesson_done','fac_quiz_done','fac_opened_lesson','fac_lesson_tab','fac_stage_done','fac_module1_passed'].forEach(k=>store.remove(k));updateUI()}
+function updateUI(){let n=store.get('fac_student_name')||'chevalier';$('heroName').textContent=n;$('profileName').textContent=n==='chevalier'?'الطالب':n;$('studentName').value=n==='chevalier'?'':n;let best=getBest();$('bestMini').textContent='🏆 '+best+'/'+qs.length;let xp=Number(store.get('fac_xp')||0);$('xpValue').textContent=xp;let done=getDoneCount();let progress=Math.round((done/8)*75);if(store.get('fac_quiz_done'))progress=Math.max(progress,90);if(best>=14)progress=100;$('homeBar').style.width=progress+'%';$('progressLabel').textContent=progress+'%';renderLearningPath();let max=getMaxUnlocked();document.querySelectorAll('#lessonNav button').forEach((b,idx)=>{b.disabled=idx>max;b.style.opacity=idx>max?'.45':'1';b.style.cursor=idx>max?'not-allowed':'pointer'})}
 function speakFr(text){if(!('speechSynthesis' in window)){alert('ميزة النطق غير متاحة في هذا المتصفح.');return}speechSynthesis.cancel();let u=new SpeechSynthesisUtterance(text);u.lang='fr-FR';u.rate=.86;u.pitch=1;speechSynthesis.speak(u)}
 updateUI();
 </script>
